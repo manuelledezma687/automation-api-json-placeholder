@@ -1,0 +1,19 @@
+trigger:
+  - master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  pythonVersion: '3.10'
+  project: "practice-azure-devops"
+  slackChannel: "automation-api-json-schema"
+  organization: "MALedezmaFalcon"
+  jobStatus: $(Agent.JobStatus)
+  runId: $(Build.BuildId)
+  commit: $(Build.SourceVersion)
+
+steps:
+  - template: templates/common-steps.yml
+  - template: templates/run-pytest..yml
+  - template: templates/send-slack-notification.yml

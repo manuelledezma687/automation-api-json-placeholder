@@ -1,0 +1,4 @@
+steps:
+  - script: |
+      python slack_notifier.py -s "$(slackChannel)" -js "$(jobStatus)" -ri "$(runId)" -p "$(project)" -o "$(organization)" -c "$(commit)"
+    displayName: 'Send Slack Notification'

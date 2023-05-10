@@ -1,0 +1,9 @@
+steps:
+  - script: |
+      echo "INFO - running pytest tests - output will be saved to 'execution_output.log' file"
+      echo "INFO - installing requirements"
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt > ./execution_output.log 2>&1
+      pytest --junitxml=./testResult.xml --alluredir=./allure-results
+      set -e
+    displayName: 'Run Pytest'
